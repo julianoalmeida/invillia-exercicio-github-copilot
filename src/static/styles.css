@@ -142,3 +142,21 @@ footer {
   padding: 20px;
   color: #666;
 }
+
+.participants-box {
+  background: #e3eafc;
+  border: 1px solid #90caf9;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  color: #0d47a1;
+  font-size: 15px;
+  word-break: break-all;
+}
+
+.participants-box.none {
+  background: #f5f5f5;
+  color: #888;
+  border: 1px dashed #bbb;
+}
