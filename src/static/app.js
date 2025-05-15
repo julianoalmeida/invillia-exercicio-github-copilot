@@ -4,6 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
 
+  // Componente de participantes
+  function ParticipantsComponent(participants) {
+    if (!participants || participants.length === 0) {
+      return `<div class="participants-box none">No participants yet</div>`;
+    }
+    return `
+      <div class="participants-box">
+        <strong>Participants:</strong>
+        <span>${participants.join(", ")}</span>
+      </div>
+    `;
+  }
+
   // Function to fetch activities from API
   async function fetchActivities() {
     try {
@@ -20,18 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
-        // Adiciona lista de participantes
-        let participantsHtml = "";
-        if (details.participants.length > 0) {
-          participantsHtml = `
-            <p><strong>Participants:</strong></p>
-            <ul>
-              ${details.participants.map(email => `<li>${email}</li>`).join("")}
-            </ul>
-          `;
-        } else {
-          participantsHtml = `<p><strong>Participants:</strong> None yet</p>`;
-        }
+        // Usa o componente de participantes
+        const participantsHtml = ParticipantsComponent(details.participants);
 
         activityCard.innerHTML = `
           <h4>${name}</h4>
